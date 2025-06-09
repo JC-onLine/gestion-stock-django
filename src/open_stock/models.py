@@ -43,19 +43,19 @@ class Location(models.Model):
 
 
 class Stock(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
     slug = models.SlugField(unique=True)
 
 
 class Movement(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    location_src = models.ForeignKey(Location, on_delete=models.CASCADE)
-    location_dest = models.ForeignKey(Location, on_delete=models.CASCADE)
-    provider_src = models.ForeignKey(Provider, on_delete=models.CASCADE)
+    location_src = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="source")
+    location_dest = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="destination")
+    provider_src = models.ForeignKey(Provider, on_delete=models.CASCADE, related_name="provider")
 
 
 class ShoppingList(models.Model):
