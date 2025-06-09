@@ -1,4 +1,4 @@
-# open-stock-food
+# open-stock
 
 This storage management project is part of mentored exercise on the training platform [Docstrings.fr](https://www.docstring.fr).<br/>
 This application is powered by [Django](https://www.djangoproject.com/), a Web Python Framework.<br/>
@@ -13,4 +13,5 @@ J'ai détourné le cahier des charges afin d'utiliser cette application Web pour
 
 
 - [Cahier des charges / Specifications](docs/specifications/README.md).
+- [Diagramme des relations de base de données / Database relation diagram](docs/database_diagram/README.md).
 - [Liste des tâches / Todo list](docs/todo/README.md)

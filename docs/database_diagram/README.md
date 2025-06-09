@@ -9,5 +9,5 @@
 > 
 > So the product location storage can be for example: kitchen, fridge, freezer, cellar.
 
-![image](images/database-relations-diagram_2025-05-31a.svg)
+![image](images/database-relations-diagram_2025-06-05a.svg)
 
