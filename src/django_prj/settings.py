@@ -9,31 +9,23 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import environ
 import os
-# from pathlib import Path # remplacement de pathlib par os pour django-environ
+from pathlib import Path
 
 
 # Set the project base directory
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
 )
 # Read environment variables from .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '..', '..', 'env_settings', '.env'))
-
-# Raises Django's ImproperlyConfigured
-# exception if SECRET_KEY not in os.environ
-# False if not in os.environ because of casting above
+environ.Env.read_env(BASE_DIR / '..' / '..' / 'env_settings' / '.env')
 DEBUG = env("DEBUG")
 SECRET_KEY = env("SECRET_KEY")
-#
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
-# ==== Replaced Django settings by django-environ ====
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+# ==== Replace Django settings by django-environ ====
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-u6mz&isof+nuenvq&%er4bue6!m4%lpu(yg8@8zkn7tb06s3)l'
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -42,7 +34,6 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -86,19 +77,16 @@ WSGI_APPLICATION = 'django_prj.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3', # remplacement de pathlib par os pour django-environ
-        'NAME': os.path.join(BASE_DIR, "db.sqlite3"),
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -117,24 +105,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
-
 LANGUAGE_CODE = 'fr-fr'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
-
 STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'account.CustomUser'
+# Use CustomUser in "account" application
+AUTH_USER_MODEL = "account.CustomUser"
