@@ -25,7 +25,7 @@ DEBUG = env("DEBUG")
 SECRET_KEY = env("SECRET_KEY")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
-# ==== Replace Django settings by django-environ ====
+# ==== Replace Django settings by django-environ 2025-06-11 ====
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-u6mz&isof+nuenvq&%er4bue6!m4%lpu(yg8@8zkn7tb06s3)l'
 # SECURITY WARNING: don't run with debug turned on in production!
