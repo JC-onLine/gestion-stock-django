@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <h2>{{ subtitle }}</h2>  <!-- Add specific context -->
+    <h3>{{ product }}</h3>
+        <ul>
+            <li>Catégorie: {{ product.category }} </li>
+            <li>Localisation: {{ product.location }} </li>
+            <li>Prix: {{ product.price }} </li>
+            <li>Date: {{ product.updated_at }} </li>
+        </ul>
+    <a href="{% url 'open_stock:product_list' %}">Retour à la liste</a>
+</body>
+</html>
