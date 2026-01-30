@@ -16,8 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from open_stock.views import ProductListView
-from open_stock.views import ProductDetailView, ProductCreateView, ProductUpdateView, ProductDeleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
