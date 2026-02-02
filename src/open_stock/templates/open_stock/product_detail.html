@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Détails</title>
@@ -10,10 +10,13 @@
     <h3>{{ product }}</h3>
         <ul>
             <li>Catégorie: {{ product.category }} </li>
-            <li>Localisation: {{ product.location }} </li>
+            <li>Rangement: {{ product.location }} </li>
             <li>Prix: {{ product.price }} </li>
             <li>Date: {{ product.updated_at }} </li>
+            <li>Commentaire: {{ product.description }} </li>
+            <li>Ref: {{ product.sku }} </li>
         </ul>
+    <a href="{% url 'open_stock:product_update' product.pk %}">Modifier le produit</a><br>
     <a href="{% url 'open_stock:product_list' %}">Retour à la liste</a>
 </body>
 </html>

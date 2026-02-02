@@ -10,8 +10,8 @@
     <form method="post">
         {% csrf_token %}
         {{ form }}
-        <button type="submit">Ajouter un produit</button>
+        <button type="submit">Modifier le produit</button>
     </form>
-    <a href="{% url 'open_stock:product_list' %}">Retour à la liste</a>
+    <a href="{% url 'open_stock:product_list' %}">Retour à la liste sans modifier</a>
 </body>
 </html>

@@ -48,16 +48,16 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, verbose_name="Nom")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products',
                                  blank=True, null=True, verbose_name="Catégorie")
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='locations',
                                  blank=True, null=True, verbose_name="Rangement")
-    count_mini_alarm = models.IntegerField(default=0, verbose_name="Alarme stock mini")
+    count_mini_alarm = models.IntegerField(default=1, verbose_name="Alarme stock mini")
     price = models.DecimalField(max_digits=10, decimal_places=2,
                                 default=0, null=True, verbose_name="Prix")
-    sku = models.CharField(max_length=50, blank=True)
-    description = models.TextField(blank=True)
+    sku = models.CharField(max_length=50, blank=True, verbose_name="Ref.")
+    description = models.TextField(blank=True, verbose_name="Commentaire")
     slug = models.SlugField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -5,6 +5,7 @@ from django.urls import reverse_lazy, reverse
 # from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+# ==== Product ListView ====
 class ProductListView(ListView):
     model = Product
     template_name = 'open_stock/product_list.html'
@@ -18,6 +19,7 @@ class ProductListView(ListView):
         return context
 
 
+# ==== Product DetailView ====
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'open_stock/product_detail.html'
@@ -30,23 +32,39 @@ class ProductDetailView(DetailView):
         return context
 
 
+# ==== Product CreateView ====
 class ProductCreateView(CreateView):
     model = Product
     template_name = 'open_stock/product_create.html'
-    fields = ['name', 'category', 'location', 'description', 'price']
+    fields = ['name', 'category', 'location',
+              'price', 'count_mini_alarm', 'description', 'sku']
 
     def form_valid(self, form):
-        # name = form.cleaned_data['name']
-        # category = form.cleaned_data['category']
         form.instance.name = form.cleaned_data['name']
         form.instance.category = form.cleaned_data['category']
         form.instance.location = form.cleaned_data['location']
-        # form.instance.name = title
-        # form.instance.name = title
-        # form.instance.name = title
+        form.instance.count_mini_alarm = form.cleaned_data['count_mini_alarm']
+        form.instance.sku = form.cleaned_data['sku']
         slug = f"{form.cleaned_data['category']}-{form.cleaned_data['name']}"
         form.instance.slug = slug
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('open_stock:product_detail', args=[self.object.pk])
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Gestion des stocks'
+        context['subtitle'] = "Ajouter un nouveau produit"
+        return context
+
+
+# ==== Product UpdateView ====
+class ProductUpdateView(UpdateView):
+    model = Product
+    template_name = 'open_stock/product_update.html'
+    fields = ['name', 'category', 'location',
+              'price', 'count_mini_alarm', 'description', 'sku']
 
     def get_success_url(self):
         return reverse('open_stock:product_detail', args=[self.object.pk])
@@ -58,10 +76,7 @@ class ProductCreateView(CreateView):
         return context
 
 
-class ProductUpdateView(UpdateView):
-    pass
-
-
+# ==== Product DeleteView ====
 class ProductDeleteView(DeleteView):
     pass
 
