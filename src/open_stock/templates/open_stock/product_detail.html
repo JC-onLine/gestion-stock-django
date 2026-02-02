@@ -17,6 +17,7 @@
             <li>Ref: {{ product.sku }} </li>
         </ul>
     <a href="{% url 'open_stock:product_update' product.pk %}">Modifier le produit</a><br>
+    <a href="{% url 'open_stock:product_delete' product.pk %}">Supprimer le produit</a><br>
     <a href="{% url 'open_stock:product_list' %}">Retour à la liste</a>
 </body>
 </html>

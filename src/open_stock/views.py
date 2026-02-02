@@ -78,7 +78,15 @@ class ProductUpdateView(UpdateView):
 
 # ==== Product DeleteView ====
 class ProductDeleteView(DeleteView):
-    pass
+    model = Product
+    template_name = 'open_stock/product_delete.html'
+    success_url = reverse_lazy('open_stock:product_list')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Gestion des stocks'
+        context['subtitle'] = "Confirmer la suppression du produit :"
+        return context
 
 
 
