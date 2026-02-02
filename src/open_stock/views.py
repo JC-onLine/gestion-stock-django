@@ -51,11 +51,11 @@ class ProductCreateView(CreateView):
     def get_success_url(self):
         return reverse('open_stock:product_detail', args=[self.object.pk])
 
-    # def get_context_data (self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['title'] = 'Gestion des stocks'
-    #     context['subtitle'] = 'Détails produit sélectionné'
-    #     return context
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Gestion des stocks'
+        context['subtitle'] = "Création d'un nouveau produit"
+        return context
 
 
 class ProductUpdateView(UpdateView):
