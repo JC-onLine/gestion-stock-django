@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import ProductListView, ProductDetailView, ProductCreateView, ProductUpdateView, ProductDeleteView
-from .views import CategoryListView, CategoryDetailView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView
+from .views_product import ProductListView, ProductDetailView, ProductCreateView, ProductUpdateView, ProductDeleteView
+from .views_category import CategoryListView, CategoryDetailView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView
 
 
 app_name = 'open_stock'
