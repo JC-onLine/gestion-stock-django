@@ -34,8 +34,8 @@ class Location(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
+    name = models.CharField(max_length=100, verbose_name="Nom")
+    description = models.TextField(blank=True, verbose_name="Commentaire")
     slug = models.SlugField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

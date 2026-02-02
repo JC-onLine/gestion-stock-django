@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <h2>{{ subtitle }}</h2>
+    <ul>
+        {% for category in categories %}
+            <li>
+                <a href="{% url 'open_stock:category_detail' category.pk %}">{{ category.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+<a href="{% url 'open_stock:category_create' %}">Créer une nouvelle catégorie de produit</a>
+</body>
+</html>

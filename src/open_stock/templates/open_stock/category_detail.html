@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <h2>{{ subtitle }}</h2>
+    <h3>{{ category }}</h3>
+        <ul>
+            <li>Commentaire: {{ category.description }} </li>
+            <li>Date: {{ category.updated_at }} </li>
+        </ul>
+    <a href="{% url 'open_stock:category_update' category.pk %}">Modifier la catégorie</a><br>
+    <a href="{% url 'open_stock:category_delete' category.pk %}">Supprimer la catégorie</a><br>
+    <a href="{% url 'open_stock:category_list' %}">Retour à la liste des catégories</a>
+</body>
+</html>
