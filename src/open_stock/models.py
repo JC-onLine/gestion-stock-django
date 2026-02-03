@@ -70,9 +70,9 @@ class Product(models.Model):
 
 
 class Provider(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
-    favorite = models.BooleanField(default=False)
+    name = models.CharField(max_length=100, verbose_name="Nom")
+    description = models.TextField(blank=True, verbose_name="Commentaire")
+    favorite = models.BooleanField(default=False, verbose_name="Favori")
     slug = models.SlugField(unique=True, default="")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

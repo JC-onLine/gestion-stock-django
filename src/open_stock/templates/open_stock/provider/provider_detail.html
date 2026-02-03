@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <h2>{{ subtitle }}</h2>
+    <h3>{{ provider }}</h3>
+        <ul>
+            <li>Commentaire: {{ provider.description }} </li>
+            <li>Favori: {{ provider.favorite }} </li>
+            <li>Date: {{ provider.updated_at }} </li>
+        </ul>
+    <a href="{% url 'open_stock:provider_update' provider.pk %}">Modifier le magasin</a><br>
+    <a href="{% url 'open_stock:provider_delete' provider.pk %}">Supprimer le magasin</a><br>
+    <a href="{% url 'open_stock:provider_list' %}">Retour à la liste</a>
+</body>
+</html>
